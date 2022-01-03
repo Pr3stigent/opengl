@@ -1,14 +1,14 @@
 project "PracticeProject"
-    kind "ConsoleApp"
+    kind "Makefile"
     language "C++"
     cppdialect "C++17"
     staticruntime "on"
 
     targetdir("../bin/" .. outputdir .. "/%{prj.name}")
-    objdir("../bin-int/" .. outputdir .. "/%{prj.name}")
+    objdir("../build/" .. outputdir .. "/%{prj.name}")
 
     files {
-        "cpp/**.cpp",
+        "src/**.cpp",
         "include/**.h"
     }
 
@@ -29,3 +29,15 @@ project "PracticeProject"
         buildoptions "/MT"
         runtime "Release"
         optimize "on"
+
+    buildcommands {
+        "make %{cfg.buildcfg}"
+    }
+
+    rebuildcommands {
+        "make %{cfg.buildcfg} rebuild"
+    }
+
+    cleancommands {
+        "make clean %{cfg.buildcfg}"
+    }

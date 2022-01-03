@@ -29,13 +29,6 @@ GOTO Done
 
 :Compile
 
-vendor\premake5.exe vs2019
-
-if not defined DevEnvDir (
-    call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools\VsDevCmd.bat"
-)
-
-set solutionFile="Workspace.sln"
-msbuild /t:Build /p:Configuration=Debug /p:Platform=x64 %solutionFile%
+vendor\premake5.exe gmake2
 
 :Done
