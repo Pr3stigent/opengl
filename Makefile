@@ -33,7 +33,7 @@ $(error $(SRC) || $(INC) || $(DEP))
 all: $(APP)
 
 $(APP): $(OBJ)
-	$(CC) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
+	$(CC) $(CXXFLAGS) -o $@ $^ $(INC) $(LDFLAGS)
 
 %.d: $(SRCDIR)/%$(EXT)
 	@$(CPP) $(CFLAGS) $< -MM -MT $(@:%.d=$(OBJDIR)/%.o) >$@
