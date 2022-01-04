@@ -28,7 +28,7 @@ DEL = del
 EXE = .exe
 WDELOBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)\\%.o)
 
-$(error $(SRC) || $(INC) || $(DEP))
+#$(error $(SRC) || $(INC) || $(DEP))
 
 all: $(APP)
 
