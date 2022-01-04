@@ -20,7 +20,8 @@ SRC = $(wildcard $(SRCDIR)/*$(EXT))
 OBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)/%.o)
 DEP = $(OBJ:$(OBJDIR)/%.o=$(DEPDIR)/%.d)
 APP = $(APPDIR)/$(APPNAME)
-INC = $(wildcard $(-I)$(INCDIR)/*/include)
+ITAG = -I
+INC = $(wildcard $(ITAG)$(INCDIR)/*/include)
 # UNIX-based OS variables & settings
 RM = rm
 DELOBJ = $(OBJ)
