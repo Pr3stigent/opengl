@@ -1,11 +1,9 @@
 # Compiler settings - Can be customized.
 CC = g++
 CXXFLAGS = -std=c++11 -Wall
-LDFLAGS = 
+LDFLAGS = -lglfw3dll -lgdi32
 
 # Makefile settings - Can be customized.
-ITAG = -I
-
 APPNAME = myapp
 EXT = .cpp
 SRCDIR = src
@@ -14,11 +12,15 @@ INCDIR = inc
 APPDIR = bin
 DEPDIR = dep
 
+ITAG = -I
+LTAG = -L
+
 SRC = $(wildcard $(SRCDIR)/*$(EXT))
 OBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)/%.o)
 DEP = $(OBJ:$(OBJDIR)/%.o=$(DEPDIR)/%.d)
 APP = $(APPDIR)/$(APPNAME)
-INC = $(ITAG)$(wildcard $(INCDIR)/*)
+INC = $(ITAG)$(wildcard $(INCDIR)/*/include)
+LIB = $(LTAG)$(wildcard $(INCDIR)/*/lib)
 #INC = $(wildcard $(ITAG)$(INCDIR)/*/include)
 
 RM = rm
@@ -28,12 +30,12 @@ DEL = del
 EXE = .exe
 WDELOBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)\\%.o)
 
-#$(error $(SRC) || $(INC) || $(DEP))
+#$(error $(SRC) || $(INC) || $(LIB))
 
 all: $(APP)
 
 $(APP): $(OBJ)
-	$(CC) $(CXXFLAGS) -o $@ $^ $(INC) $(LDFLAGS)
+	$(CC) $(CXXFLAGS) -o $@ $^ $(LIB) $(LDFLAGS)
 
 %.d: $(SRCDIR)/%$(EXT)
 	@$(CPP) $(CFLAGS) $< -MM -MT $(@:%.d=$(OBJDIR)/%.o) >$@
@@ -41,7 +43,7 @@ $(APP): $(OBJ)
 -include $(DEP)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%$(EXT)
-	$(CC) $(CXXFLAGS) -o $@ -c $<
+	$(CC) $(CXXFLAGS) -c $< $(INC) $(LIB) $(LDFLAGS) -o $@ 
 
 .PHONY: clean
 clean:
