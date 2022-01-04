@@ -1,7 +1,6 @@
 #include "GLFW/glfw3.h"
 
-int main(void)
-{
+int main() {
     GLFWwindow* window;
 
     /* Initialize the library */
