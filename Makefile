@@ -1,7 +1,7 @@
 # Compiler settings - Can be customized.
 CC = g++
 CXXFLAGS = -std=c++11 -Wall
-LDFLAGS = -lglew32 -lglfw3 -lopengl32 -lglu32 -lgdi32
+LDFLAGS = -lglfw3 -lopengl32 -lglu32 -lgdi32
 
 # Makefile settings - Can be customized.
 APPNAME = myapp
