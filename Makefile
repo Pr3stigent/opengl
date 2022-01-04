@@ -13,11 +13,13 @@ EXT = .cpp
 SRCDIR = src
 OBJDIR = build
 INCDIR = inc
+APPDIR = bin
 DEPDIR = dep
 ############## Do not change anything from here downwards! #############
 SRC = $(wildcard $(SRCDIR)/*$(EXT))
 OBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)/%.o)
 DEP = $(OBJ:$(OBJDIR)/%.o=$(DEPDIR)/%.d)
+APP = $(APPDIR)/$(APPNAME)
 # UNIX-based OS variables & settings
 RM = rm
 DELOBJ = $(OBJ)
@@ -31,10 +33,10 @@ WDELOBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)\\%.o)
 ########################################################################
 #$(error $(OBJ) IS $(DEP))
 
-all: $(APPNAME)
+all: $(APP)
 
 # Builds the app
-$(APPNAME): $(OBJ)
+$(APP): $(OBJ)
 	$(CC) $(CXXFLAGS) -o $@ $^ $(LDFLAGS)
 
 # Creates the dependecy rules
@@ -52,7 +54,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%$(EXT)
 # Cleans complete project
 .PHONY: clean
 clean:
-	$(RM) $(DELOBJ) $(DEP) $(APPNAME)
+	$(RM) $(DELOBJ) $(DEP) $(APP)
 
 # Cleans only all files with the extension .d
 .PHONY: cleandep
@@ -63,7 +65,7 @@ cleandep:
 # Cleans complete project
 .PHONY: cleanw
 cleanw:
-	$(DEL) $(WDELOBJ) $(DEP) $(APPNAME)$(EXE)
+	$(DEL) $(WDELOBJ) $(DEP) $(APP)$(EXE)
 
 # Cleans only all files with the extension .d
 .PHONY: cleandepw
