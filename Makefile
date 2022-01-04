@@ -14,7 +14,7 @@ APPNAME = myapp
 EXT = .cpp
 SRCDIR = src
 OBJDIR = build
-INCDIR = $(ITAG)inc
+INCDIR = inc
 APPDIR = bin
 DEPDIR = dep
 ############## Do not change anything from here downwards! #############
