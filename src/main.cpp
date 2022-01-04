@@ -1,6 +1,12 @@
 #include "GLFW/glfw3.h"
+#include "window.h"
 
 int main() {
+    const int HEIGHT = 800;
+    const int WIDTH = 600;
+    const std::string WINDOWNAME = "Hello World!";
+
+    Interface interface {HEIGHT, WIDTH, WINDOWNAME};
     GLFWwindow* window;
 
     /* Initialize the library */
@@ -19,7 +25,7 @@ int main() {
     glfwMakeContextCurrent(window);
 
     /* Loop until the user closes the window */
-    while (!glfwWindowShouldClose(window))
+    while (!interface.shouldClose())
     {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
@@ -31,6 +37,6 @@ int main() {
         glfwPollEvents();
     }
 
-    glfwTerminate();
+    interface.~Interface();
     return 0;
 }
