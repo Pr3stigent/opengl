@@ -8,11 +8,13 @@ CXXFLAGS = -std=c++11 -Wall
 LDFLAGS = 
 
 # Makefile settings - Can be customized.
+ITAG = -I
+
 APPNAME = myapp
 EXT = .cpp
 SRCDIR = src
 OBJDIR = build
-INCDIR = inc
+INCDIR = $(ITAG)inc
 APPDIR = bin
 DEPDIR = dep
 ############## Do not change anything from here downwards! #############
@@ -20,8 +22,7 @@ SRC = $(wildcard $(SRCDIR)/*$(EXT))
 OBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)/%.o)
 DEP = $(OBJ:$(OBJDIR)/%.o=$(DEPDIR)/%.d)
 APP = $(APPDIR)/$(APPNAME)
-ITAG = -I
-INC = $(wildcard $(ITAG$(INCDIR))/*/include)
+INC = $(wildcard $(INCDIR)/*/include)
 #INC = $(wildcard $(ITAG)$(INCDIR)/*/include)
 # UNIX-based OS variables & settings
 RM = rm
