@@ -14,7 +14,6 @@ class Interface {
 
         int initiateWindow(int height, int width, std::string windowName);
         void terminateWindow(bool terminateGLFW);
-        void terminateGLFW();
         bool shouldClose();
         
 };

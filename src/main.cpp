@@ -2,16 +2,12 @@
 #include "window.h"
 
 int main() {
-    const int HEIGHT = 800;
-    const int WIDTH = 600;
-    const std::string WINDOWNAME = "Hello World!";
+    Interface newInterface = Interface(800, 600, "Hello World!");
 
-    Interface interface {HEIGHT, WIDTH, WINDOWNAME};
-
-    while (!interface.shouldClose()) {
+    while (!newInterface.shouldClose()) {
         glfwPollEvents();
     }
 
-    interface.terminateWindow(true);
+    newInterface.terminateWindow(true);
     return 0;
 }

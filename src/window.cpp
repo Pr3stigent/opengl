@@ -24,7 +24,7 @@ int Interface::initiateWindow(int height, int width, std::string windowName) {
     window = glfwCreateWindow(height, width, windowName.c_str(), NULL, NULL);
     if (window == NULL) {
         std::cout << "Window was unable to be created." << std::endl;
-        terminateGLFW();
+        glfwTerminate();
         return -1;
     }
 
@@ -38,10 +38,6 @@ void Interface::terminateWindow(bool terminateGLFW) {
     if (terminateGLFW) {
         glfwTerminate();
     }
-}
-
-void Interface::terminateGLFW() {
-    glfwTerminate();
 }
 
 bool Interface::shouldClose() {
