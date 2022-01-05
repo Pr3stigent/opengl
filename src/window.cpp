@@ -15,11 +15,6 @@ int Interface::initiateWindow(int height, int width, std::string windowName) {
         std::cout << "GLFW was unable to be initialised." << std::endl;
         return -1;
     };
-/*
-    glfwWindowHint(GLFW_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-*/
 
     window = glfwCreateWindow(height, width, windowName.c_str(), NULL, NULL);
     if (window == NULL) {
