@@ -7,10 +7,14 @@ class Interface {
     public:
         int height, width;
         std::string windowName;
-        GLFWwindow* window;
+        GLFWwindow *window;
 
         Interface(int height, int width, std::string windowName);
         ~Interface();
+
+        int initiateWindow(int height, int width, std::string windowName);
+        void terminateWindow(bool terminateGLFW);
+        void terminateGLFW();
         bool shouldClose();
         
 };
