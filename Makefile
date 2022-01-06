@@ -1,7 +1,7 @@
 # Compiler settings - Can be customized.
 CC = g++
 CXXFLAGS = -std=c++11 -Wall
-LDFLAGS = -lglfw3 -lopengl32 -lglu32 -lgdi32
+LDFLAGS = -lglfw3 -lopengl32 -lglu32 -lgdi32 -lglew32
 
 # Makefile settings - Can be customized.
 APPNAME = myapp
@@ -12,16 +12,12 @@ INCDIR = inc
 APPDIR = bin
 DEPDIR = dep
 
-ITAG = -I
-LTAG = -L
-
 SRC = $(wildcard $(SRCDIR)/*$(EXT))
 OBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)/%.o)
 DEP = $(OBJ:$(OBJDIR)/%.o=$(DEPDIR)/%.d)
 APP = $(APPDIR)/$(APPNAME)
-INC = $(ITAG)$(wildcard $(INCDIR)/*/include)
-LIB = $(LTAG)$(wildcard $(INCDIR)/*/lib)
-#INC = $(wildcard $(ITAG)$(INCDIR)/*/include)
+INC = $(foreach file, $(wildcard $(INCDIR)/*/include), -I$(file))
+LIB = $(foreach file, $(wildcard $(INCDIR)/*/lib), -L$(file))
 
 RM = rm
 DELOBJ = $(OBJ)
@@ -29,8 +25,6 @@ DELOBJ = $(OBJ)
 DEL = del
 EXE = .exe
 WDELOBJ = $(SRC:$(SRCDIR)/%$(EXT)=$(OBJDIR)\\%.o)
-
-#$(error $(SRC) || $(INC) || $(LIB))
 
 all: $(APP)
 
