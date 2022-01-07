@@ -35,6 +35,10 @@ Shaders::Shaders(std::string vertexFileName, std::string fragmentFileName) : ver
 	glDeleteShader(fragmentShader);
 }
 
-void Shaders::activate() {
+void Shaders::useProgram() {
 	glUseProgram(program);
+}
+
+void Shaders::deleteProgram() {
+	glDeleteProgram(program);
 }

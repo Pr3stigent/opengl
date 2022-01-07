@@ -17,6 +17,7 @@ class Shaders {
         std::string fragmentFileName;
     public:
         Shaders(std::string vertexFileName, std::string fragmentFileName);
-        void activate();
+        void useProgram();
+        void deleteProgram();
         
 };
