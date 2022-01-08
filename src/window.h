@@ -15,5 +15,6 @@ class Interface {
         int initiateWindow(int height, int width, std::string windowName);
         void terminateWindow(bool terminateGLFW);
         bool shouldClose();
+        void swapBuffers();
         
 };

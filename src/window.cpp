@@ -38,3 +38,7 @@ void Interface::terminateWindow(bool terminateGLFW) {
 bool Interface::shouldClose() {
     return glfwWindowShouldClose(window);
 }
+
+void Interface::swapBuffers() {
+    glfwSwapBuffers(window);
+}
