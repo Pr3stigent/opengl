@@ -7,8 +7,9 @@
 #include "iostream"
 #include "fstream"
 #include "cerrno"
+#include <vector>
 
-std::string getFileContents();
+static std::vector<char> getFileContents();
 
 class Shaders {
     private:
