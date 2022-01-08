@@ -28,7 +28,11 @@ GLuint indices[] =
 
 int main() {
     Interface newInterface = Interface(800, 600, "Hello World!");
-    gladLoadGL();
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+{
+    std::cout << "Failed to initialize GLAD" << std::endl;
+    return -1;
+}    
     glViewport(0, 0, 800, 600);
 
     Shaders shader = Shaders("default.vert", "default.frag");
