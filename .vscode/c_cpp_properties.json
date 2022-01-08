@@ -5,7 +5,7 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/inc/glfw-3.3.6.bin.WIN64/include",
-                "${workspaceFolder}/inc/glew-2.1.0/include"
+                "${workspaceFolder}/inc/glad/include"
             ],
             "defines": [
                 "_DEBUG",
