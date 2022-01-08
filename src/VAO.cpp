@@ -1,6 +1,6 @@
 #include "VAO.h"
 
-VAO::VAO(GLuint* indices, GLsizeiptr size): indices(indices), size(size) {
+VAO::VAO() {
    glGenVertexArrays(1, &VertexBO);
 }
 
