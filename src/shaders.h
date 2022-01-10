@@ -8,6 +8,9 @@
 #include "fstream"
 #include "cerrno"
 #include <vector>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 static std::vector<char> getFileContents();
 
