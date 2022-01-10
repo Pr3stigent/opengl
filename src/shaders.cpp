@@ -1,20 +1,17 @@
 #include "shaders.h"
 
-std::vector<char> getFileContents(const std::string& filepath) {
-  std::ifstream file{filepath, std::ios::ate | std::ios::binary};
+void getFileContents(const std::string& filepath) {
+  FILE* file = fopen(path, "r");
 
-  if (!file.is_open()) {
-    throw std::runtime_error("failed to open file: " + filepath);
-  }
+    fseek(file, 0L, SEEK_END);
+    long __length = ftell(file) * sizeof(char);
+    fseek(file, 0L, SEEK_SET);
 
-  size_t fileSize = static_cast<size_t>(file.tellg());
-  std::vector<char> buffer(fileSize);
+    char* __buffer = (char*)malloc(__length);
+    fread((void*)__buffer, 1, __length, file);
 
-  file.seekg(0);
-  file.read(buffer.data(), fileSize);
-
-  file.close();
-  return buffer;
+    *buffer = __buffer;
+    *length = __length;
 }
 
 Shaders::Shaders(std::string vertexFileName, std::string fragmentFileName) : vertexFileName(vertexFileName), fragmentFileName(fragmentFileName) {
